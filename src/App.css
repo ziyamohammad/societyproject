@@ -141,8 +141,8 @@ color:white;
         height:40vh;
     }
 }
-@media screen and (max-width:630px){
-    .signupcontent{
+@media screen and (max-width:768px){
+    /* .signupcontent{
         padding-left:30px;
         font-size: 30px;
     }
@@ -158,7 +158,26 @@ color:white;
     }
     .image ul{
         font-size:17px;
-    }
+    } */
+     .signup{
+        flex-direction:column;
+        height:180vh;
+     }
+     .image{
+        width:100%;    
+     }
+     .signupform{
+        width:100%;
+     }
+     .signupcontent{
+        margin-right:10px;
+     }
+     .signupimg{
+        width:85%;
+     }
+     .image{
+        height:35%;
+     }
 }
 @media screen and (max-width:450px){
     .signupcontent{
