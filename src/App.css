@@ -168,6 +168,7 @@ color:white;
      }
      .signupform{
         width:100%;
+       
      }
      .signupcontent{
         margin-right:10px;
@@ -177,7 +178,9 @@ color:white;
      }
      .image{
         height:35%;
+       
      }
+
 }
 @media screen and (max-width:450px){
     .signupcontent{
@@ -207,6 +210,12 @@ color:white;
 }
 .signupform form{
     padding-left:10px;
+}
+.signupform{
+    margin-top:-50px;
+}
+.image{
+    margin-top:-170px;
 }
 }
 
