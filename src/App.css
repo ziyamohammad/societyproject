@@ -170,9 +170,11 @@ color:white;
     }
     .signupform form Label {
         font-size:13px;
+
 }
 .signupform form input{
     font-size:12px;
+    padding-left: 0px;
 }
 .signupsubmit{
     font-size:12px;
