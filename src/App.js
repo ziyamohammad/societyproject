@@ -1,12 +1,25 @@
-import logo from './logo.svg';
+
 import './App.css';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
+import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
+import {ToastContainer} from "react-toastify";
 function App() {
+ 
+
+
+
   return (
     <div className="App">
-      {/* <Login/> */}
-      <SignUp/>
+      <Router>
+        <Routes>
+        <Route path ="/" element={<Login/>}/>
+          <Route path ="/login" element={<Login/>}/>
+          <Route path = "/signup" element={<SignUp/>}/>
+        </Routes>
+      </Router>
+      <ToastContainer position="top-center" autoClose={3000} />
+      
     </div>
   );
 }

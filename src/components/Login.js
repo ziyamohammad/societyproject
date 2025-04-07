@@ -1,6 +1,46 @@
-import React from 'react'
+import React, {useState} from 'react'
 import '../css/login.css';
+import {ToastContainer,toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from './firebase';
+import { useNavigate } from 'react-router';
+
+
+
+
+
 function Login() {
+ const navigate=useNavigate();
+  const[email,setEmail]=useState("")
+  const[pass,setPass]=useState("")
+  const handleChange = (e) =>{
+    if(e.target.className==="email"){
+      setEmail(e.target.value)
+    }
+    else{
+      setPass(e.target.value)
+    }
+  }
+ 
+  const HandleSubmit = async(e) =>{
+    e.preventDefault();
+    try{
+     await signInWithEmailAndPassword(auth,email,pass)
+     toast.success("User Logged in Successfully",{
+      position: "top-center",
+      autoClose: 3000,
+      
+     })
+    }catch(error){
+      toast.error(`Login Failed: ${error.message}`, {
+              position: "top-center",
+              autoClose: 4000,
+            });
+      navigate('/signup')
+    }
+  }
+  
   return (
     <div className='main-container'>
       <div className="left-container">
@@ -28,16 +68,16 @@ function Login() {
             <br />
             You can  <span className="span-heading">Register here !</span>
           </div>
-          <form action="">
+          <form action="" onSubmit={HandleSubmit} >
             <label for="email">Email</label>
             <div className='input-container'>
               <span className="emailimg"><img src="./message 1.png" alt="" /></span>
-              <input type="text" placeholder='Enter your email address' className="email" />
+              <input type="text" value={email} className="email"  onChange={handleChange}/>
             </div>
             <label for="password">Password</label>
             <div className='input-container'>
               <span className="passwordimg"><img src="./padlock 1.png" alt="" /></span>
-              <input type="text" placeholder='Enter your Password' className="password" />
+              <input type="text" value={pass} className="password" onChange={handleChange} />
             </div>
             <div className="conditions">
               <div className="remember">
@@ -66,6 +106,7 @@ function Login() {
           </div>
         </div>
       </div>
+
 
     </div>
   )
