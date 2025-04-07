@@ -66,7 +66,7 @@ function Login() {
           <div className="signin-heading">
             If you don’t have an account register
             <br />
-            You can <Link to="/signup" className='link'> <span className="span-heading">Register here !</span></Link>
+            You can <span className="span-heading">Register here !</span>
           </div>
           <form action="" onSubmit={HandleSubmit} >
             <label for="email">Email</label>
