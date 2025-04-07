@@ -78,6 +78,9 @@ ul li {
 .span-heading{
 color: rgba(193, 12, 153, 1);
 }
+.link{
+    text-decoration: none;
+}
 form{
     display: flex;
     flex-direction: column;

@@ -1,5 +1,6 @@
 import React from 'react'
 import '../css/login.css';
+import { Link } from 'react-router-dom';
 function Login() {
   return (
     <div className='main-container'>
@@ -26,7 +27,7 @@ function Login() {
           <div className="signin-heading">
             If you don’t have an account register
             <br />
-            You can  <span className="span-heading">Register here !</span>
+            You can <Link to="/signup" className='link'> <span className="span-heading">Register here !</span></Link>
           </div>
           <form action="">
             <label for="email">Email</label>
