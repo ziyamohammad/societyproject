@@ -1,0 +1,298 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    background: transparent;
+}
+.main{
+    min-height:300vh;
+    max-height: auto;
+    width:100vw;
+    display:flex;
+    flex-direction: column;
+    /* justify-content:space-around; */
+    background-color: rgba(5, 2, 20, 1);
+    padding:10px 45px 0px 45px;
+}
+.mainnav{
+    height:10vh;
+    width:100%;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.mainnavid{
+    height:100%;
+    width:50%;
+    display:flex;
+    flex-direction: row;
+    align-items:center;
+
+
+}
+.mainnavimg{
+    height:100%;
+   margin-right:10px;
+}
+.mainnavappname{
+    height: 10vh;
+    /* width: 50%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mainnavname{
+font-family: "Poppins", sans-serif;    
+font-weight: 600;
+font-size: 20px;
+}
+.colorchange{
+    color:rgba(255, 47, 206, 1)
+}
+.mainnavcontent{
+    font-family: "Mona Sans", sans-serif;   
+font-weight: 600;
+font-size: 28px;
+}
+.maincontent{
+    width:100%;
+    height:30vh;
+    background-color: #1A031D;
+    margin-top:30px;
+    border-radius:15px;
+    border: 1px solid rgba(188, 126, 143, 1);
+    display:flex;
+    justify-content: space-between;
+    overflow:visible;
+    padding-right:30px
+}
+.maincontentcon{
+width:70%;
+font-family: "Poppins", sans-serif;      
+font-weight: 600;
+font-size: 36px;
+background: transparent;
+padding-left:40px;
+
+}
+.maincontentcon p{
+    background:transparent;
+}
+.smalltxt{
+font-family: "Poppins", sans-serif;         
+font-weight: 400;
+font-size: 17px;
+background:transparent;
+color:rgba(221, 106, 195, 1);
+}
+.maincontentimg{
+   overflow:visible;
+   margin-top:-30px;
+   background:transparent;
+  
+   
+}
+.maincontentimg img{
+    border-radius: 20px;
+    margin-top:-15px;
+   
+    background-color:transparent;
+    
+}
+.mainpastinterview{
+    width:100%;
+    min-height:70vh;
+    max-height: auto;
+    background-color: #1A031D;
+    margin-top:50px;
+    border-radius:15px;
+    border: 1px solid rgba(188, 126, 143, 1);
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0px 10px 30px;
+
+}
+.cardhead{
+font-family: "Poppins", sans-serif;       
+font-weight: 600;
+font-size: 32px;
+}
+
+.pastinter{
+    display: flex;
+    flex-wrap: wrap;
+    width:100%;
+    height: 100%;
+    justify-content: space-evenly;
+    margin-top:30px;
+}
+
+.card{
+    width:30%;
+    min-height:50vh;
+    max-height: auto;
+    background: linear-gradient(rgba(70, 26, 62, 1),rgba(172, 64, 152, 1));
+    border-radius:20px;
+    border:1px solid rgba(188, 126, 143, 1);
+    box-shadow:0px 0px 10px 0px rgba(172, 114, 114, 1);
+    display:flex;
+    flex-direction: column;
+    padding:5px 10px 5px 3%;
+    /* flex: 1 1 30%;
+    min-width: 250px; 
+    max-width: 30%; */
+}
+.cardmain{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:10px;
+}
+.company{
+    height:44px;
+    width:47px;
+
+}
+.companytype{
+font-family: "Poppins", sans-serif;         
+font-weight: 600;
+font-size: 15px;
+background-color: rgba(246, 243, 243,0.5);
+
+}
+.interviewname{
+    font-family: "Mona Sans", sans-serif;
+font-weight: 600;
+font-size: 20px;
+}
+.timings{
+font-family: "Mona Sans", sans-serif;
+display:flex;
+justify-content: space-between;
+padding-right:20px;
+margin-top:10px;
+font-weight: 400;
+font-size: 14px;
+
+}
+.date , .star{
+    margin-left:5px;
+}
+.theory{
+font-family: "Mona Sans", sans-serif;   
+font-weight: 400;
+font-size: 14px;
+margin-top:10px;
+
+}
+.lastlogo img {
+    width:65%;
+}
+.lastpart{
+    display:flex;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+.interviewbutton{
+    background-color: rgba(202, 197, 254, 1);
+    color:black;
+    font-family: "Mona Sans", sans-serif;   
+    font-weight: 400;   
+font-weight: 600;
+font-size: 14px;
+border-radius: 56px;
+padding:0px 10px 0px 10px;
+
+}
+.mainpickinterview{
+    width:100%;
+    min-height:180vh;
+    max-height: auto;
+    background-color: #1A031D;
+    margin-top:30px;
+    border-radius:15px;
+    border: 1px solid rgba(188, 126, 143, 1);
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0px 10px 30px;
+
+}
+
+@media screen and (max-width:960px){
+    .maincontentcon{
+        font-size:28px;
+    }
+    .smalltxt{
+        font-size:14px;
+    }
+}
+@media screen and (max-width:768px){
+    .maincontentimg img{
+        height:110%;
+        width:100%;
+        margin-top:0px;
+    }
+    .maincontentimg{
+        margin-top:-6px;
+    }
+    .maincontentcon{
+        font-size:22px;
+    }
+    .smalltxt{
+        font-size:12px;
+    }
+    .card{
+         flex: 1 1 30%;
+    min-width: 230px; 
+    max-width: 30%;
+    margin-top:20px;
+    }
+    .cardhead{
+        text-align:center;
+    }
+    .mainpastinterview , .mainpickinterview{
+        padding-left:0px;
+    }
+    .mainnavimg{
+        height:55%;
+    }
+    .mainnavname{
+        font-size: 13px;
+    }
+    .mainnavcontent{
+        font-size: 18px;
+    }
+    .spanimg{
+        width:30px;
+        height:30%;
+    }
+    
+}
+@media screen and (max-width:590px){
+    .maincontentimg img{
+      
+        margin-top:-17px;
+    }
+    .maincontentimg{
+        margin-top:20px;
+    }
+    .maincontentcon{
+        padding-left:20px;
+        font-size: 20px;
+    }
+    .maincontent{
+        padding-right:0px;
+    }
+}
+@media screen and (max-width:427px){
+    .maincontentimg{
+        display:none;
+    }
+    .maincontentcon{
+        width:100%;
+    }
+   
+}

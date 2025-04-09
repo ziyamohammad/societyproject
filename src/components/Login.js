@@ -32,6 +32,9 @@ function Login() {
       autoClose: 3000,
       
      })
+     setTimeout(() => {
+      navigate('/main');
+    }, 3000);
     }catch(error){
       toast.error(`Login Failed: ${error.message}`, {
               position: "top-center",
