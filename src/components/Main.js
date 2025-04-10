@@ -48,7 +48,7 @@ const Main = () => {
       <div className="mainnav">
         <div className="mainnavid">
           <span className="mainnavimg">
-            <img src="./image.png" alt="/" height="100%" width="100%"/>
+            <img src="./image (2).png" alt="/" height="100%" width="100%"/>
           </span>
           <span className="mainnavname">
           Good morning ,<span className="colorchange">{username}!!</span> 

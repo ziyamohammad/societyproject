@@ -7,7 +7,7 @@ const Card = (job) => {
     let{imgurl,type,name,date,star}=job;
 
     const handleClick=()=>{
-       navigate('/login')
+       navigate('/interface')
     }
   return (
     
