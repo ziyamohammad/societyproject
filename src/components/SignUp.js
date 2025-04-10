@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword,updateProfile } from 'firebase/auth';
 import React, { useState } from 'react';
 import { auth, db } from './firebase'; 
 import { setDoc, doc, serverTimestamp } from 'firebase/firestore';
@@ -26,6 +26,10 @@ const SignUp = () => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
+      await updateProfile(auth.currentUser, {
+        displayName: name, 
+      });
+  
 
       await setDoc(doc(db, "Users", user.uid), {
         fullname: name,

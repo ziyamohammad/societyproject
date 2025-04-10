@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router';
 
 function Login() {
  const navigate=useNavigate();
+ const[master,setMaster]=useState("")
   const[email,setEmail]=useState("")
   const[pass,setPass]=useState("")
   const handleChange = (e) =>{
@@ -27,11 +28,14 @@ function Login() {
     e.preventDefault();
     try{
      await signInWithEmailAndPassword(auth,email,pass)
+     const user = auth.currentUser;
+     const name = user.displayName || user.email;
      toast.success("User Logged in Successfully",{
       position: "top-center",
       autoClose: 3000,
       
      })
+     
      setTimeout(() => {
       navigate('/main');
     }, 3000);

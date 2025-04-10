@@ -1,8 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../css/main.css';
 import Card from './Card';
+import { auth } from './firebase';
+import { onAuthStateChanged } from 'firebase/auth';
+
 
 const Main = () => {
+
+  const [username, setUsername] = useState('');
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUsername(user.displayName || user.email); 
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
   const job = [
     {
       id:1,
@@ -37,7 +51,7 @@ const Main = () => {
             <img src="./image.png" alt="/" height="100%" width="100%"/>
           </span>
           <span className="mainnavname">
-          Good morning ,<span className="colorchange">Ziya!!</span> 
+          Good morning ,<span className="colorchange">{username}!!</span> 
           </span>
         </div>
         <div className="mainnavappname">
