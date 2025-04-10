@@ -7,11 +7,12 @@
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
     color:rgba(221, 223, 255, 1);
-    background-color: rgba(1, 3, 11, 1);
+    
 }
 .main-containers{
     width: 100%; 
     padding: 2% 10%;
+    background-color: rgba(1, 3, 11, 1);
 }
 .second-container{
     display: flex;
