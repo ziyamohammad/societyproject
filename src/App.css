@@ -109,8 +109,16 @@ font-size: 16px;
     font-family: "Mona Sans", sans-serif;     
 font-weight: 600;
 font-size: 16px;
-
-
+}
+.MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-colorPrimary.MuiInputBase-fullWidth.MuiInputBase-formControl.MuiInputBase-adornedEnd.css-1n04w30-MuiInputBase-root-MuiOutlinedInput-root{
+    height:100%;
+    border-radius:40px;
+    background-color: rgba(84, 85, 90, 1);
+    padding:8px 10px 5px 0px;
+    color:white;
+    font-family: "Mona Sans", sans-serif;     
+font-weight: 600;
+font-size: 20px;
 }
 .signupsubmit{
     height:8%;

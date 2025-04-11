@@ -5,12 +5,15 @@ import 'react-toastify/dist/ReactToastify.css';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './firebase';
 import { useNavigate } from 'react-router';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 
 
 
 
 function Login() {
+  const [show ,setShow] = useState(false);
  const navigate=useNavigate();
  const[master,setMaster]=useState("")
   const[email,setEmail]=useState("")
@@ -23,7 +26,6 @@ function Login() {
       setPass(e.target.value)
     }
   }
- 
   const HandleSubmit = async(e) =>{
     e.preventDefault();
     try{
@@ -84,7 +86,8 @@ function Login() {
             <label for="password">Password</label>
             <div className='input-container'>
               <span className="passwordimg"><img src="./padlock 1.png" alt="" /></span>
-              <input type="text" value={pass} className="password" onChange={handleChange} />
+              <input type={ show ? "text": "password"} value={pass} className="password" onChange={handleChange} />
+              <span onClick={()=>setShow(!show)}>{show ? <VisibilityIcon/> : <VisibilityOffIcon/> }</span>
             </div>
             <div className="conditions">
               <div className="remember">
