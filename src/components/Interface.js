@@ -36,7 +36,7 @@ function Interface() {
         </div>
         <div className="buttons">
           <button className="repeat"><span><img src="./repeate-music.png" alt="" /></span> Repeat</button>
-          <button className="leave"><span><img src="./call-slash.png" alt="" /></span>Leave interview</button>
+          <button className="leave" ><span><img src="./call-slash.png" alt="" /></span>Leave interview</button>
         </div>
     </div>
   )

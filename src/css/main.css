@@ -4,6 +4,7 @@
     box-sizing: border-box;
     background: transparent;
 }
+
 .main{
     min-height:300vh;
     max-height: auto;
