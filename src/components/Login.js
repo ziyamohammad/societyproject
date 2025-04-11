@@ -28,6 +28,12 @@ function Login() {
   }
   const HandleSubmit = async(e) =>{
     e.preventDefault();
+    if(!email || !pass){
+      toast.error(`Please fill all entries`, {
+        position: "top-center",
+        autoClose: 4000,
+      });
+    }
     try{
      await signInWithEmailAndPassword(auth,email,pass)
      const user = auth.currentUser;
@@ -46,8 +52,17 @@ function Login() {
               position: "top-center",
               autoClose: 4000,
             });
+
+     
+    }
+    const user = auth.currentUser;
+    if(!user){
       navigate('/signup')
     }
+  }
+
+  const Gotosignup=()=>{
+    navigate('/signup')
   }
   
   return (
@@ -75,7 +90,7 @@ function Login() {
           <div className="signin-heading">
             If you don’t have an account register
             <br />
-            You can <span className="span-heading">Register here !</span>
+            You can <span className="span-heading" onClick={Gotosignup}>Register here !</span>
           </div>
           <form action="" onSubmit={HandleSubmit} >
             <label for="email">Email</label>
