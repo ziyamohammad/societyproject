@@ -42,6 +42,18 @@ margin-top:30px;
     height:53vh;
     width:100%;
 }
+.wrong-name {
+    border: 2px solid red;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.4);
+    border-radius: 4px;
+  }
+  .wrong-email {
+    border: 2px solid red;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.4);
+    border-radius: 4px;
+  }
 .image ul{
     font-family: "Poppins", sans-serif;    
 font-weight: 500;

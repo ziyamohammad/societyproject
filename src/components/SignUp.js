@@ -16,15 +16,41 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+
+  const validname = /^[a-zA-Z]+( [a-zA-Z]+){1,}$/;
+  const validemail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  const [checkname, setCheckname] = useState(true);
+  const [checkemail, setcheckemail] = useState(true);
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === "name") setName(value);
-    if (name === "email") setEmail(value);
-    if (name === "password") setPassword(value);
+    if (name === "name"){
+      setName(value);
+      if(!validname.test(value) && value !== ""){
+         setCheckname(false);
+         return;
+      }
+      setCheckname(true);
+    } 
+    if (name === "email"){
+      setEmail(value);
+      if(!validemail.test(value) && value !== ""){
+         setcheckemail(false);
+         return;
+      }
+      setcheckemail(true)
+    } 
+    if (name === "password") {
+      setPassword(value);
+    } 
+      
   };
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    if(!checkemail || !checkname){
+      return;
+    }
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
@@ -78,11 +104,11 @@ const SignUp = () => {
 
         <form onSubmit={handleRegister}>
           <label htmlFor="name">Full name</label>
-          <input type="text" className="name" name='name' value={name} onChange={handleChange} required />
-
+          <input type="text" className={checkname ? "name" : "wrong-name"} name='name' value={name} onChange={handleChange} required  />
+         {!checkname && <div style={{color:"red"}}>Enter Full Name</div>}
           <label htmlFor="email">Email</label>
-          <input type="email" className="email" name='email' value={email} onChange={handleChange} required />
-
+          <input type="email" className={checkemail ? "email" : "wrong-email"} name='email' value={email} onChange={handleChange} required />
+          {!checkemail && <div style={{color:"red"}}>Enter correct email</div>}
           <label htmlFor="password">Password</label>
           <TextField
       name='password'
