@@ -4,6 +4,7 @@ import {getAuth} from "firebase/auth";
 import {getFirestore} from "firebase/firestore"
 
 
+
 const firebaseConfig = {
   apiKey: "AIzaSyCtegc72QL0bumlJL8DINwTPHE1EW5T4UQ",
   authDomain: "prepwise-a1779.firebaseapp.com",
@@ -13,7 +14,6 @@ const firebaseConfig = {
   appId: "1:74511285485:web:81a6bf7e48e53b9fb5a0e4",
   measurementId: "G-GFJ59QW2LB"
 };
-
 
 const app =initializeApp(firebaseConfig) ;
 
