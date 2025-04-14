@@ -1,9 +1,10 @@
 import { google } from "@ai-sdk/google";
 import { generateText } from "ai";
-import { db } from "../../src/components/firebase";
 import { addDoc, collection } from "firebase/firestore";
+import { db } from "../src/components/firebase";
 
-const FIREBASE_API_KEY = process.env.NEXT_PUBLIC_FIREBASE_API_KEY; // From Firebase console
+
+const FIREBASE_API_KEY = "AIzaSyCtegc72QL0bumlJL8DINwTPHE1EW5T4UQ"; // From Firebase console
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
@@ -37,7 +38,7 @@ export default async function handler(req, res) {
       // ✅ Generate questions
       const { text: questionsText } = await generateText({
         model: google("gemini-2.0-flash-001", {
-          apiKey: process.env.GEMINI_API_KEY,
+          apiKey: "AIzaSyC2-l-L72khcrl4ikyWC05DocZ2PGHPM5M",
         }),
         prompt: `Prepare questions for a job interview.
         The job role is ${role}.
