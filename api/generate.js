@@ -3,39 +3,16 @@ import { generateText } from "ai";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../src/components/firebase";
 
-
-const FIREBASE_API_KEY = "AIzaSyCtegc72QL0bumlJL8DINwTPHE1EW5T4UQ"; // From Firebase console
-
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
-      const { role, type, level, techstack, amount } = req.body;
+      const { role, type, level, techstack, amount, userid } = req.body;
 
-      const authHeader = req.headers.authorization || "";
-      const token = authHeader.replace("Bearer ", "");
-
-      if (!token) {
-        return res.status(401).json({ error: "Missing token" });
+      if (!userid) {
+        return res.status(400).json({ error: "Missing userid from request body" });
       }
 
-      // ✅ Use Firebase Identity Toolkit REST API to verify ID token
-      const verifyRes = await fetch(
-        `https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${FIREBASE_API_KEY}`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ idToken: token }),
-        }
-      );
-
-      const verifyData = await verifyRes.json();
-      if (!verifyData.users || !verifyData.users[0]) {
-        return res.status(403).json({ error: "Invalid token" });
-      }
-
-      const uid = verifyData.users[0].localId; // ✅ User UID
-
-      // ✅ Generate questions
+      // ✅ Generate questions with Gemini
       const { text: questionsText } = await generateText({
         model: google("gemini-2.0-flash-001", {
           apiKey: "AIzaSyC2-l-L72khcrl4ikyWC05DocZ2PGHPM5M",
@@ -60,14 +37,14 @@ export default async function handler(req, res) {
           ?.map((q) => q.replace(/"/g, "")) || [];
       }
 
-      // ✅ Save to Firestore
+      // ✅ Save to Firestore with client-passed user ID
       const interview = {
         role,
         type,
         level,
         techstack: techstack.split(","),
         questions,
-        userId: uid,
+        userId: userid,
         finalized: true,
         createdAt: new Date().toISOString(),
       };
