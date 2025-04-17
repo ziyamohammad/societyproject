@@ -1,47 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../css/interface.module.css";
 import { getAuth } from "firebase/auth";
+import Vapi from "@vapi-ai/web";
 
 function Interface() {
-  const [questions, setQuestions] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [inCall, setInCall] = useState(false);
+  const [message, setMessage] = useState("");
+  const [vapi, setVapi] = useState(null);
 
-  const handleGenerate = async () => {
-    const auth = getAuth();
-    const user = auth.currentUser;
+  // Initialize Vapi once
+  useEffect(() => {
+    const vapiInstance = new Vapi(process.env.REACT_APP_VAPI_API_KEY);
+    setVapi(vapiInstance);
+  }, []);
 
-    if (!user) {
-      alert("You must be logged in");
-      return;
-    }
+  const handleCallToggle = () => {
+    if (!vapi) return; // if not ready
 
-    setLoading(true);
-    try {
-      const response = await fetch("/api/generate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          role: "Frontend Developer",
-          type: "technical",
-          level: "junior", // or "mid", "senior" — update as per flow
-          techstack: "React, JavaScript, CSS",
-          amount: 5,
-          userid: user.uid,
-        }),
+    if (!inCall) {
+      vapi.start(process.env.REACT_APP_VAPI_ASSISTANT_ID);
+      vapi.on("message", (msg) => {
+        setMessage(msg.transcript || ""); // Assuming msg has a 'transcript' field
       });
-
-      const data = await response.json();
-      if (data.success) {
-        setQuestions(data.questions);
-        console.log("Generated Questions:", data.questions);
-      } else {
-        console.error("Generation failed", data);
-      }
-    } catch (err) {
-      console.error("Request error", err);
-    } finally {
-      setLoading(false);
+      console.log("Call started");
+    } else {
+      vapi.stop();
+      console.log("Call ended");
+      setMessage(""); // Optionally clear message on end
     }
+
+    setInCall((prev) => !prev);
   };
 
   return (
@@ -49,24 +37,24 @@ function Interface() {
       <div className={styles["top-container"]}>
         <div className={styles.logo}>
           <span className={styles.logoimg}>
-            <img src="./OBJECTS.png" alt="/" height="100%" width="100%" />
+            <img src="./OBJECTS.png" alt="Logo" height="100%" width="100%" />
           </span>
           <div className={styles.logoname}>PrepWise</div>
         </div>
         <div className={styles["top-logo"]}>
-          <img src="./apimg.png" alt="" />
+          <img src="./apimg.png" alt="Profile" />
         </div>
       </div>
 
       <div className={styles["second-container"]}>
         <div className={styles["second-left"]}>
           <span style={{ marginRight: "0.5em" }}>
-            <img src="./image 18.png" alt="" />
+            <img src="./image 18.png" alt="Tag" />
           </span>
           Frontend Developer Interview
           <span style={{ marginLeft: "0.5em" }}>
-            <img src="./tech.png" alt="" />
-            <img src="./Frame.png" alt="" />
+            <img src="./tech.png" alt="Tech" />
+            <img src="./Frame.png" alt="Frame" />
           </span>
         </div>
         <div className={styles["second-right"]}>Technical Interview</div>
@@ -74,61 +62,27 @@ function Interface() {
 
       <div className={styles.boxes}>
         <div className={styles.box}>
-          <img src="./avatar-removebg-preview (1).png" alt="" />
+          <img src="./avatar-removebg-preview (1).png" alt="AI Interviewer" />
           <span>AI Interviewer</span>
         </div>
         <div className={styles.box}>
-          <img src="./image (1).png" alt="" />
+          <img src="./image (1).png" alt="Adrian" />
           <span>Adrian (You)</span>
         </div>
       </div>
 
       <div className={styles.question}>
-        What job experience level are you targeting?
+        {message }
       </div>
 
       <div className={styles.buttons}>
-        <button className={styles.repeat}>
-          <span>
-            <img src="./repeate-music.png" alt="" />
-          </span>
-          Repeat
-        </button>
-        <button className={styles.leave}>
-          <span>
-            <img src="./call-slash.png" alt="" />
-          </span>
-          Leave interview
-        </button>
-      </div>
-
-      <div style={{ marginTop: "2em" }}>
         <button
-          onClick={handleGenerate}
-          style={{
-            padding: "1em 2em",
-            fontSize: "1em",
-            borderRadius: "8px",
-            backgroundColor: "#3b82f6",
-            color: "white",
-            border: "none",
-            cursor: "pointer",
-          }}
+          className={inCall ? styles.leave : styles.start}
+          onClick={handleCallToggle}
         >
-          {loading ? "Generating..." : "Start Interview"}
+          {inCall ? "End Call" : "Call"}
         </button>
       </div>
-
-      {questions.length > 0 && (
-        <div style={{ marginTop: "2em" }}>
-          <h3>Generated Questions</h3>
-          <ul>
-            {questions.map((q, index) => (
-              <li key={index}>{q}</li>
-            ))}
-          </ul>
-        </div>
-      )}
     </div>
   );
 }

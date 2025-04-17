@@ -111,7 +111,7 @@ border-radius: 12px;
 margin-top: 2%;
 background: linear-gradient(rgba(26, 28, 32, 1),rgba(8, 9, 13, 1)) ;
 }
-.repeat,.leave{
+.start ,.leave{
     font-family: "Mona Sans", sans-serif;
 font-weight: 600;
     background-color: rgba(36, 39, 58, 1);
@@ -123,31 +123,24 @@ font-weight: 600;
     height: 60px;
     border-radius: 55px;
 }
-.repeat:hover,
-.repeat:hover span,
-.repeat:hover span img {
-  background-color: rgb(24, 25, 35);
+ .start i , .leave i{
+    width:20px;
+    height:20px;
 }
-.leave:hover,
-.leave:hover span,
-.leave:hover span img {
-  background-color: rgb(251, 58, 58);
+.start{
+    background-color:rgb(37, 147, 7);
 }
 .leave{
     background-color: rgba(247, 83, 83, 1);
 }
+.start span{
+    background-color:rgb(37, 147, 7);
+
+}
 .leave span{
     background-color: rgba(247, 83, 83, 1);
 }
-.leave span img {
-    background-color: rgba(247, 83, 83, 1);
-}
-.repeat span {
-    background-color: rgba(36, 39, 58, 1);
-}
-.repeat span img {
-    background-color: rgba(36, 39, 58, 1);
-}
+
 .buttons{
     display: flex;
     gap: 3%;
