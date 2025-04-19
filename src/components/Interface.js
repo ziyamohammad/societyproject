@@ -72,7 +72,7 @@ function Interface() {
       </div>
 
       <div className={styles.question}>
-        {message }
+        {message || "What job experience level are you targeting?"}
       </div>
 
       <div className={styles.buttons}>
