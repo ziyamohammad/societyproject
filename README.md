@@ -7,22 +7,13 @@ An intelligent voice-based interview platform that allows users to **simulate re
 
 ## 🎥 Demo Video
 
-🎬 [Watch Demo on YouTube](https://your-demo-link.com) *(Add if available)*  
+🎬 [Watch Demo on YouTube](https://societyproject.vercel.app/)  
 🔗 [Live Site](https://your-vercel-app.vercel.app)
 
----
-
-## 📸 Screenshots
-
-| Home Page | Interview Call | Score Feedback |
-|-----------|----------------|----------------|
-| ![Home](./screenshots/home.png) | ![Call](./screenshots/call.png) | ![Score](./screenshots/score.png) |
-
----
 
 ## 🚀 Tech Stack
 
-- **Frontend:** React.js, Tailwind CSS
+- **Frontend:** React.js, HTML/CSS
 - **Voice Calls:** [Vapi.ai](https://vapi.ai/)
 - **Question Generation:** Google Gemini API
 - **Database:** Firebase Firestore
@@ -168,15 +159,3 @@ npm run dev
 If this project helped you or inspired your own, please consider giving it a ⭐ on [GitHub](https://github.com/ziyamohammad/ai-interviewer)!
 
 PRs, forks, and collabs welcome!
-
-```
-
----
-
-Let me know if:
-- You want a **demo video template or script**
-- You want to host your backend on **Firebase Functions** or **Express**
-- You need help integrating **a dashboard for scores or history**
-
-This project is **resume and interview gold**. Polish this README, deploy it, and **post it on LinkedIn with a story** — it’ll get serious attention.
-```
